@@ -7,4 +7,6 @@
   :main ^:skip-aot build-name.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all
-                       :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}})
+                       :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}
+             :dev {:plugins [[lein-binplus "0.6.6"]]}}
+  :bin {:name "build-names"})

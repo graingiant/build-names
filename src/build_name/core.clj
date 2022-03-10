@@ -14,9 +14,10 @@
 (defn -main
   "Generate a random noun-adjective name pair."
   [& args]
-  (let [opts (parse-opts args cli-options)]
-    (reduce
-     (fn [name [option _]] (apply (get-in func-map [option]) [name]))
-     (generate-name)
-     (apply dissoc (get-in opts [:options]) [:version :number]))))
+  (let [opts (parse-opts args cli-options)
+        output (reduce
+                (fn [name [option _]] (apply (get-in func-map [option]) [name]))
+                (generate-name)
+                (apply dissoc (get-in opts [:options]) [:version :number]))]
+    (println output)))
 
