@@ -2,6 +2,8 @@
 
 FIXME: description
 
+Heavily inspired by this repository: https://github.com/fnichol/names
+
 ## Installation
 
 Download from http://example.com/FIXME.
@@ -25,7 +27,9 @@ FIXME: listing of options this app accepts.
 ...
 
 ### Any Other Sections
+
 ### That You Think
+
 ### Might be Useful
 
 ## License
