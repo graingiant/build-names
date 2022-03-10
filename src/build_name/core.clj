@@ -7,7 +7,9 @@
                   ["-i" "--integer" "Add integer to name" :id :integer]
                   ["-d" "--date" "Add date to name" :id :date]
                   ;; TODO: Add support for number options
-                  ["-n" "--number" "Number of items to generate" :id :number]])
+                  ["-n" "--number" "Number of items to generate" :id :number]
+                  ;; TODO: Support alliteration in generate-names function
+                  ["-a" "--alliterate" "Make sure the word pairs are alliterative" :id :alliterate]])
 
 (def func-map {:date append-date :integer append-id})
 
@@ -18,6 +20,6 @@
         output (reduce
                 (fn [name [option _]] (apply (get-in func-map [option]) [name]))
                 (generate-name)
-                (apply dissoc (get-in opts [:options]) [:version :number]))]
+                (apply dissoc (get-in opts [:options]) [:version :number :alliterate]))]
     (println output)))
 
