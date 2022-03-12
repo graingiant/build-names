@@ -8,7 +8,6 @@
                   ["-i" "--integer" "Add integer to name" :id :integer]
                   ["-d" "--date" "Add date to name" :id :date]
                   ["-n" "--number NUMBER" "Number of items to generate" :default 1 :parse-fn #(Integer/parseInt %)]
-                  ;; TODO: Support alliteration in generate-names function
                   ["-a" "--alliterate" "Make sure the word pairs are alliterative" :id :alliterate]])
 
 (def func-map {:date append-date :integer append-id})
@@ -17,16 +16,15 @@
   (apply (get-in func-map [option]) [name]))
 
 (defn generate-names [modifiers]
-  (reduce apply-modifier (generate-name) modifiers))
+  (if (contains? modifiers :alliterate)
+    (reduce apply-modifier (generate-name true) (apply dissoc modifiers [:alliterate]))
+    (reduce apply-modifier (generate-name) (apply dissoc modifiers [:alliterate]))))
 
 (defn -main
   "Generate a random noun-adjective name pair."
   [& args]
   (let [opts (parse-opts args cli-options)
         num-to-gen (get-in opts [:options :number])
-        modifiers (apply dissoc (get-in opts [:options]) [:version :number :alliterate])
+        modifiers (apply dissoc (get-in opts [:options]) [:version :number])
         output (repeatedly num-to-gen #(generate-names modifiers))]
     (pp/pprint output)))
-
-
-
