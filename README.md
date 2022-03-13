@@ -16,8 +16,10 @@ $ build-names
 ## Installation
 
 `curl -o- https://raw.githubusercontent.com/graingiant/build-names/0.0.2/scripts/install.sh | bash`
+
 or
-`wget -q0- https://raw.githubusercontent.com/graingiant/build-names/0.0.2/scripts/install.sh | bash`
+
+`wget -qO- https://raw.githubusercontent.com/graingiant/build-names/0.0.2/scripts/install.sh | bash`
 
 After installation, the file binary should be in your `/usr/local/bin` directory. Either restart your terminal application or `source` your profile again.
 
