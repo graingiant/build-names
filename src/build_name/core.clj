@@ -4,9 +4,9 @@
   (:gen-class))
 
 (def cli-options [[nil "--version" "Version number" :id :version]
-                  ["-i" "--integer" "Add integer to name" :id :integer]
-                  ["-d" "--date" "Add date to name" :id :date]
-                  ["-n" "--number NUMBER" "Number of items to generate" :default 1 :parse-fn #(Integer/parseInt %)]
+                  ["-i" "--integer" "Append random integer to names generated (Ex: abject-hands-0843)" :id :integer]
+                  ["-d" "--date" "Append todays date to the names generates (Ex: abject-hands-2022-03-13)" :id :date]
+                  ["-n" "--number NUMBER" "Number of names to generate" :default 1 :parse-fn #(Integer/parseInt %)]
                   ["-a" "--alliterate" "Make sure the word pairs are alliterative" :id :alliterate]])
 
 (def func-map {:date append-date :integer append-id})
