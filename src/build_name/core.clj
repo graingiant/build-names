@@ -1,6 +1,5 @@
 (ns build-name.core
   (:require [clojure.tools.cli :refer [parse-opts]]
-            [clojure.pprint :as pp]
             [build-name.names.generate :refer [generate-name append-id append-date]])
   (:gen-class))
 
@@ -27,4 +26,4 @@
         num-to-gen (get-in opts [:options :number])
         modifiers (apply dissoc (get-in opts [:options]) [:version :number])
         output (repeatedly num-to-gen #(generate-names modifiers))]
-    (pp/pprint output)))
+    (run! println output)))
